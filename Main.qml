@@ -270,19 +270,7 @@ Window {
                             font.family: poppinsSemiBold.name
                             font.weight: 600
                             color: "#FFFFFF"
-                            font.pointSize: parent.width / 11
-                        }
-                        Text {
-                            id: complete
-                            Layout.alignment: Qt.AlignLeft
-                            Layout.topMargin: parent.height / 15
-                            width: parent.width
-                            anchors.left: parent.left
-                            anchors.leftMargin: parent.width / 10
-                            text: "Complete ..."
-                            font.family: poppins.name
-                            color: "#FFFFFF"
-                            font.pointSize: parent.width / 12
+                            font.pointSize: parent.width / 10
                         }
 
                         Button {
@@ -302,7 +290,7 @@ Window {
                                 color: "#FFFFFF"
                                 font.family: poppinsSemiBold.name
                                 font.weight: 600
-                                font.pointSize: parent.width / 10;
+                                font.pointSize: parent.width / 5;
                             }
 
                             background: Rectangle {
@@ -354,7 +342,7 @@ Window {
 
                 Layout.preferredHeight: win.height * 3 / 10
                 Layout.preferredWidth: win.width * 9 / 10
-                Layout.topMargin: win.height / 50
+                Layout.topMargin: win.height / 45
                 Layout.alignment: Qt.AlignHCenter
 //                Layout.fillWidth: true
 
@@ -382,9 +370,11 @@ Window {
                         anchors.fill: parent
                         text: "Interesting and important facts you need to know"
                         width: parent.width
-                        font.family: poppins.name
-                        anchors.centerIn: parent
+                        font.family: poppinsBold.name
+                        horizontalAlignment: Text.AlignHCenter
                         font.pointSize: parent.height / 5
+                        font.weight: 600
+                        wrapMode: "WordWrap"
                     }
                 }
 
@@ -393,7 +383,7 @@ Window {
                     width: parent.width * 6 / 10
                     height: parent.height / 5
                     anchors.top: needToKnow.bottom
-                    //anchors.topMargin: parent.height / 10
+                    anchors.topMargin: parent.height / 50
                     anchors.horizontalCenter: parent.horizontalCenter
 //                    anchors.verticalCenter: parent.verticalCenter
                     Button {
@@ -404,10 +394,11 @@ Window {
 
                         Text {
                             anchors.centerIn: parent
-                            text: "Check"
+                            text: "Check out"
                             color: "#FFFFFF"
-                            font.family: poppins.name
-                            font.pointSize: parent.height / 3
+                            font.family: poppinsBold.name
+                            font.weight: 600
+                            font.pointSize: parent.height * 2 / 5
                         }
 
                         background: Rectangle {
