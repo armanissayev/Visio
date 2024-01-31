@@ -121,7 +121,9 @@ void AppEngine::nameWritten(QString name)
 QString AppEngine::takeName()
 {
     QSettings qs;
-    return qs.value( "cache/name" ).toString();
+    QString name = qs.value( "cache/name" ).toString();
+    if (name.isEmpty()) name = QString("user");
+    return name;
 }
 
 

@@ -40,6 +40,7 @@ Window {
     FirstPage {
         id : page1
         visible: false
+        background: white;
         onButtomClicked: {
             app.firstPageVisited();
             num = 0;
@@ -54,21 +55,62 @@ Window {
     Page {
         id : namePage;
         visible : false;
+        background: white;
+        Rectangle {
+            id: welcomeText;
+            height: win.height / 12;
+            width: win.width * 9 / 10;
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.top: parent.top;
+            anchors.topMargin: win.height / 4;
+            Text {
+                text: "Hello user, please, enter your name! 👋";
+                font.pointSize: parent.height / 3;
+                font.family: poppins.name
+                anchors.horizontalCenter: parent.horizontalCenter;
+            }
+        }
+
         TextField {
             id : name;
-            placeholderText: qsTr( "Enter name" );
+            placeholderText: qsTr( "Enter your name" );
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.top: welcomeText.bottom;
+            anchors.topMargin: win.height / 50;
+            height: win.height / 15;
+            width: win.width * 3 / 4;
         }
 
         Button {
             id : next;
-            text : "Next";
-            anchors.bottom: parent.bottom;
-            anchors.right: parent.right;
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.top: name.bottom;
+            anchors.topMargin: win.height / 25;
+            height: win.height / 15
+            width: win.width / 3
+            Text {
+                anchors.centerIn: parent
+                text : "Confirm";
+                color: "#FFFFFF"
+                font.family: poppinsBold.name
+                font.weight: 600
+                font.pointSize: parent.height * 2 / 5
+            }
 
+            background:Rectangle {
+                anchors.fill: next
+                radius: next.height / 2
+                gradient: Gradient {
+                    orientation: Gradient.Horizontal;
+                    GradientStop { position: 0.0; color : "#9DCEFF" }
+                    GradientStop { position : 1.0; color : "#92A3FD" }
+                }
+            }
             onClicked: {
                 app.nameWritten( name.text );
                 num = 0;
                 stackview.pop();
+                headerText.text = "Welcome, " + name.text;
             }
 
         }
@@ -79,6 +121,7 @@ Window {
         id : nPage;
         anchors.fill: parent;
         visible: false;
+        background: white;
 
         Button{
             id: settings;
@@ -103,19 +146,21 @@ Window {
             anchors.left: parent.left
 
             Text {
-                text: "Welcome"
-                font.family: poppinsBold.name
-                font.bold: true
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: win.width / 20
+                id: headerText
+                text: "Welcome, " + app.takeName();
+                font.family: poppinsBold.name;
+                font.bold: true;
+                anchors.verticalCenter: parent.verticalCenter;
+                anchors.left: parent.left;
+                anchors.leftMargin: win.width / 20;
             }
         }
 
         ColumnLayout {
             id: content
-            spacing: 0
+            spacing: 10
             anchors.top: header.bottom
+            anchors.topMargin: win.height / 40;
 
             Rectangle {
                 id: monyear
