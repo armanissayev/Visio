@@ -12,16 +12,19 @@ Page {
     property string link;
     property int num;
     signal onButtonClicked();
+    background: white;
 
     Rectangle {
         id: png;
         anchors.top: parent.top;
         anchors.left: parent.left;
         width: parent.width;
-        height: parent.height * 2 / 3;
+        height: parent.height * 58 / 100;
         Image {
             id: upper_part;
-            anchors.centerIn: parent;
+            anchors.top: parent.top;
+            anchors.left: parent.left;
+            anchors.topMargin: parent.height / -20;
             height:parent.height;
             width: parent.width;
             source: link;
@@ -30,33 +33,46 @@ Page {
     }
 
     Rectangle {
-        id: txt;
-        width: parent.width;
-        height: parent.height / 8;
         anchors.top: png.bottom;
-        anchors.left: parent.left;
-        Text {
-            height:parent.height / 2;
+        width: parent.width * 8 / 10;
+        height: parent.height / 4;
+        anchors.horizontalCenter: parent.horizontalCenter;
+
+        Rectangle {
+            id: txt;
             width: parent.width;
-            text: text1;
+            height: parent.height * 3 / 10;
             anchors.top: parent.top;
+            anchors.left: parent.left;
+            Text {
+                width: parent.width * 3 / 4;
+                height: parent.height;
+                text: text1;
+                anchors.top: parent.top;
+                wrapMode: "WordWrap"
+                font.family: poppinsBold.name;
+                font.weight: 600;
+                font.pointSize: page.width / 25;
+            }
         }
-    }
 
-    Rectangle {
-        id: txt2;
-        width: parent.width;
-        height: parent.height / 8;
-        anchors.top: txt.bottom;
-        anchors.left: parent.left;
-        Text {
-            height: parent.height / 2;
+        Rectangle {
+            id: txt2;
             width: parent.width;
-            text: text2;
-            anchors.top: parent.horizontalCenter;
+            height: parent.height * 6 / 10;
+            anchors.top: txt.bottom;
+            anchors.topMargin: parent.height / 10;
+            anchors.left: parent.left;
+            Text {
+                width: parent.width
+                height: parent.height
+                text: text2;
+                anchors.top: parent.horizontalCenter;
+                wrapMode: "WordWrap"
+                font.family: poppins.name;
+            }
         }
     }
-
     Button {
         id: ibutton;
         anchors.bottom: parent.bottom;
@@ -71,7 +87,7 @@ Page {
             height: parent.height
             width: parent.width
             color: "#94A9FE"
-            radius: page.height / 20;
+            radius: page.height / 2;
         }
 
         Image {
